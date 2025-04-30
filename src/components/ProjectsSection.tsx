@@ -57,7 +57,30 @@ const projects = [
         "\HOME-1.png"
       ]
     }
+  },
+  {
+    "id": 3,
+    "title": "Lifespan Estimator",
+    "description": "A comprehensive tool to estimate your potential lifespan based on various health and lifestyle factors, backed by scientific research and advanced algorithms.",
+    "tags": ["React", "TypeScript", "TailwindCSS", "shadcn/ui", "Recharts", "Git", "Vercel"],
+    "image": "/Lifespan-Estimator.png",
+    "ApplicationLink": "https://lifespan-estimator.vercel.app/",
+    "githubLink": "https://github.com/your-github-link",
+    "details": {
+      "fullDescription": "Lifespan Estimator provides an estimate of your remaining lifespan based on health, lifestyle habits, and environmental factors. This tool takes into account medical conditions, diet, exercise, social connections, and mental well-being to provide an educated estimate. Please note that this is a general tool and should not replace professional health advice.",
+      "benefits": [
+        "Get an estimate of your remaining lifespan based on personal data and lifestyle choices.",
+        "Understand how your health and environment influence your long-term well-being.",
+        "Learn about factors that may shorten or extend your life expectancy.",
+        "Encourages proactive health behaviors and awareness about quality of life."
+      ],
+      "realWorldImpact": "Lifespan Estimator raises awareness about the impact of daily habits and environmental factors on longevity. It encourages individuals to evaluate their health and lifestyle choices, sparking meaningful conversations around wellness and proactive health management.",
+      "images": [
+        "/Lifespan-Estimator.png"
+      ]
+    }
   }
+  
 ];
 
 
