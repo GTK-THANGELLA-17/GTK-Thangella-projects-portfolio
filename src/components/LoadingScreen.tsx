@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -19,35 +18,6 @@ const LoadingScreen = ({ progress = 0 }: LoadingScreenProps) => {
       return () => clearTimeout(timer);
     }
   }, [progress]);
-
-  const gridVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.03,
-      }
-    }
-  };
-
-  const cellVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: { 
-      scale: 1, 
-      opacity: 0.6,
-      transition: { 
-        type: "spring", 
-        stiffness: 300, 
-        damping: 15 
-      }
-    }
-  };
-
-  // Array for grid cells with different sizes
-  const gridCells = Array.from({ length: 64 }).map((_, i) => ({
-    size: Math.random() > 0.8 ? 'col-span-2 row-span-2' : '', 
-    opacity: 0.3 + Math.random() * 0.4
-  }));
 
   // Digital circuit lines for the tech effect
   const circuitLines = [
@@ -71,49 +41,29 @@ const LoadingScreen = ({ progress = 0 }: LoadingScreenProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        {/* Tech grid background */}
-        <div className="absolute inset-0 tech-grid-bg overflow-hidden">
-          <motion.div 
-            className="grid grid-cols-8 grid-rows-8 gap-1 w-full h-full"
-            variants={gridVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {gridCells.map((cell, i) => (
-              <motion.div
-                key={i}
-                className={`bg-accent ${cell.size}`}
-                variants={cellVariants}
-                style={{ opacity: cell.opacity }}
-                custom={i}
-              />
-            ))}
-          </motion.div>
-
-          {/* Digital circuit pattern */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-            {circuitLines.map((path, i) => (
-              <motion.path
-                key={i}
-                d={path}
-                stroke="currentColor"
-                className="text-accent"
-                strokeWidth="0.5"
-                fill="none"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
-                  pathLength: 1, 
-                  opacity: 0.8,
-                  transition: { 
-                    duration: 1.5, 
-                    delay: i * 0.2,
-                    ease: "easeInOut" 
-                  }
-                }}
-              />
-            ))}
-          </svg>
-        </div>
+        {/* Digital circuit pattern */}
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+          {circuitLines.map((path, i) => (
+            <motion.path
+              key={i}
+              d={path}
+              stroke="currentColor"
+              className="text-accent"
+              strokeWidth="0.5"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ 
+                pathLength: 1, 
+                opacity: 0.8,
+                transition: { 
+                  duration: 1.5, 
+                  delay: i * 0.2,
+                  ease: "easeInOut" 
+                }
+              }}
+            />
+          ))}
+        </svg>
 
         {/* Central data visualization */}
         <div className="relative z-10 mb-12">
