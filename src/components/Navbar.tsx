@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '@/components/ui/navigation-menu';
@@ -19,6 +20,7 @@ const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
   
+  // After hydration, we have access to the theme
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -35,6 +37,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
       
+      // Set active section based on scroll position
       const sections = ['home', 'about', 'projects', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
@@ -55,6 +58,7 @@ const Navbar = () => {
     };
   }, []);
 
+  // If not mounted yet, return a placeholder for the theme toggle to avoid hydration mismatch
   if (!mounted) return null;
 
   return (
@@ -62,7 +66,11 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${scrolled ? 'bg-white/90 dark:bg-navy-900/90 backdrop-blur-md py-4 shadow-md' : 'bg-transparent py-6'}`}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        scrolled
+          ? 'bg-white/90 dark:bg-navy-900/90 backdrop-blur-md py-4 shadow-md'
+          : 'bg-transparent py-6'
+      }`}
     >
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
         <motion.a 
@@ -75,6 +83,7 @@ const Navbar = () => {
           <span className="absolute bottom-0 left-0 w-0 h-1 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
         </motion.a>
 
+        {/* Desktop Navigation */}
         <div className="hidden md:block">
           <NavigationMenu>
             <NavigationMenuList className="flex space-x-8">
@@ -106,6 +115,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center space-x-4">
+          {/* Theme toggle */}
           <motion.button
             onClick={toggleTheme}
             className="p-2 rounded-full hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors text-navy-800 dark:text-navy-100"
@@ -120,6 +130,7 @@ const Navbar = () => {
             )}
           </motion.button>
 
+          {/* Mobile Menu Button */}
           <motion.button
             className="md:hidden text-navy-800 dark:text-navy-100 hover:bg-navy-100 dark:hover:bg-navy-800 p-2 rounded-full transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -131,11 +142,12 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: mobileMenuOpen ? 0 : "100%" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`fixed inset-0 z-50 bg-white/95 dark:bg-navy-900/95 backdrop-blur-md md:hidden pt-24 overflow-auto`}
+        className={`fixed inset-0 z-50 bg-white/95 dark:bg-navy-900/95 backdrop-blur-md md:hidden pt-24`}
       >
         <div className="container mx-auto px-6">
           <ul className="flex flex-col items-center space-y-8 pt-8">
