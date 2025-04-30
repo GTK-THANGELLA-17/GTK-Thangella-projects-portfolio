@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '@/components/ui/navigation-menu';
@@ -149,7 +148,7 @@ const Navbar = () => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`fixed inset-0 z-50 bg-white/95 dark:bg-navy-900/95 backdrop-blur-md md:hidden pt-24`}
       >
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 h-full overflow-y-auto">
           <ul className="flex flex-col items-center space-y-8 pt-8">
             {links.map((link) => (
               <motion.li 
