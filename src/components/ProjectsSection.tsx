@@ -79,6 +79,29 @@ const projects = [
         "/Lifespan-Estimator.png"
       ]
     }
+  },
+  {
+    "id": 2,
+    "title": "Reel Revival",
+    "description": "Reel Revival offers a platform to book exclusive private screenings for classic films and movies that are no longer in theaters, creating a premium cinema experience for film lovers and supporting local theaters. This is a concept that I am working on developing. If you like this concept or want to give suggestions, feel free to message me!",
+    "tags": ["React", "TypeScript", "Vite", "TailwindCSS", "Node.js"],
+    "image": "/Reel-Revival.png",
+    "ApplicationLink": "https://reel-revival.vercel.app/",
+    "githubLink": "https://github.com/your-github-link",
+    "details": {
+      "fullDescription": "Reel Revival connects movie enthusiasts with theaters for private screenings of classic films or movies missed during their theatrical run. We provide a customizable viewing experience in premium theaters, supporting local businesses during non-peak times. This is a concept that I am working on developing, and I would love to hear your feedback!",
+      "benefits": [
+        "Private Screenings: Book a theater for an exclusive movie experience.",
+        "Classic Movie Selection: Watch films that are no longer in theaters.",
+        "Customizable Events: Perfect for special occasions like birthdays or anniversaries.",
+        "Support for Local Theaters: Keep cinemas alive during off-peak periods.",
+        "Premium Experience: State-of-the-art projection and sound."
+      ],
+      "realWorldImpact": "Reel Revival allows film lovers to relive movie magic on the big screen while supporting local theaters, fostering a community of movie enthusiasts who can enjoy cinema in a private, memorable setting.",
+      "images": [
+        "/Reel-Revival.png"
+      ]
+    }
   }
   
 ];
