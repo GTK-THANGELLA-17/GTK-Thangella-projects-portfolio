@@ -14,7 +14,7 @@ interface ProjectDetailsProps {
     description: string;
     tags: string[];
     image: string;
-    ApplicationLink: string;
+    demoLink: string;
     githubLink: string;
     details: {
       fullDescription: string;
@@ -204,14 +204,14 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
             </Card>
           )}
 
-          {/* Application & GitHub Links */}
+          {/* Demo & GitHub Links */}
           <div className="flex gap-4">
             <Button 
               className="flex-1 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 border-none shadow-md hover:shadow-lg transition-all"
-              onClick={() => window.open(project.ApplicationLink, '_blank')}
+              onClick={() => window.open(project.demoLink, '_blank')}
             >
               <Play className="mr-2 h-4 w-4" />
-              Application
+              View Demo
             </Button>
             <Button 
               variant="outline" 

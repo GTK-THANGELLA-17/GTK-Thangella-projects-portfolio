@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
-import { Mail, Send, MessageSquare, Star, Heart, Code } from 'lucide-react';
+import { Mail, Send, MessageSquare, Star, Heart, Code, MapPin, Phone } from 'lucide-react';
 import { toast } from "sonner";
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 import {
   Select,
   SelectContent,
@@ -89,137 +89,229 @@ const ContactSection = () => {
     }
   };
 
+  const contactInfo = [
+    {
+      icon: Mail,
+      title: "Email",
+      value: "imgtk17@gmail.com",
+      description: "Drop me a line anytime"
+    },
+    {
+      icon: MapPin,
+      title: "Location",
+      value: "Available Globally",
+      description: "Remote collaboration worldwide"
+    },
+    {
+      icon: Phone,
+      title: "Response Time",
+      value: "24-48 hours",
+      description: "Quick turnaround guaranteed"
+    }
+  ];
+
   return (
-    <section id="contact" className="bg-navy-50 dark:bg-navy-800/30" data-aos="fade-in" data-aos-delay="200">
+    <section id="contact" className="relative overflow-hidden">
       <div className="section-container">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center bg-gold-100 text-gold-800 dark:bg-gold-900/30 dark:text-gold-400 rounded-full h-14 w-14 mb-6 animate-bounce-gentle">
-              <Mail className="h-6 w-6" />
-            </div>
+        {/* Background decoration */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-accent/10 to-blue-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <motion.div
+              className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-accent to-blue-500 rounded-full mb-8 floating-element"
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+            >
+              <Mail className="h-8 w-8 text-white" />
+            </motion.div>
             
-            <h2 className="text-3xl lg:text-4xl font-playfair font-bold text-navy-900 dark:text-white mb-4">
-              Let's Connect
-            </h2>
+            <motion.h2 
+              className="text-4xl lg:text-5xl font-playfair font-bold mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              Let's Create Something{" "}
+              <span className="premium-text-gradient">Amazing</span>{" "}
+              Together
+            </motion.h2>
             
-            <p className="text-navy-700 dark:text-navy-200 max-w-2xl mx-auto">
-              I'm always open to discussing new projects, creative ideas, receiving feedback, or answering questions about my work. 
-              Feel free to reach out for any reason!
-            </p>
+            <motion.p 
+              className="text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              I'm always excited to discuss new projects, creative ideas, receive feedback, 
+              or answer questions about my work. Let's start a conversation!
+            </motion.p>
           </div>
-          
-          <div className="bg-white dark:bg-navy-800/70 rounded-2xl shadow-lg p-8 md:p-12 hover:shadow-xl transition-all duration-300 dark:border dark:border-navy-700/50">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="group">
-                  <label htmlFor="name" className="block text-sm font-medium text-navy-800 dark:text-navy-200 mb-2 group-focus-within:text-gold-500 transition-colors">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-navy-200 dark:border-navy-600 bg-transparent text-navy-900 dark:text-white focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all outline-none"
-                    placeholder="Your name"
-                    required
-                  />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Contact Info */}
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-playfair font-bold mb-8">Get in Touch</h3>
+              
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <motion.div
+                    key={info.title}
+                    className="premium-card p-6 group"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-accent to-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <info.icon className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg mb-1">{info.title}</h4>
+                        <p className="text-accent font-semibold mb-1">{info.value}</p>
+                        <p className="text-sm text-foreground/60">{info.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            
+            {/* Contact Form */}
+            <motion.div
+              className="premium-card p-8"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="group">
+                    <label htmlFor="name" className="block text-sm font-medium mb-3 group-focus-within:text-accent transition-colors">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full px-4 py-4 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm text-foreground focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="group">
+                    <label htmlFor="email" className="block text-sm font-medium mb-3 group-focus-within:text-accent transition-colors">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-4 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm text-foreground focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none"
+                      placeholder="Your email"
+                      required
+                    />
+                  </div>
                 </div>
                 
-                <div className="group">
-                  <label htmlFor="email" className="block text-sm font-medium text-navy-800 dark:text-navy-200 mb-2 group-focus-within:text-gold-500 transition-colors">
-                    Email
+                <div>
+                  <label htmlFor="type" className="block text-sm font-medium mb-3">
+                    Purpose
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-navy-200 dark:border-navy-600 bg-transparent text-navy-900 dark:text-white focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all outline-none"
-                    placeholder="Your email"
-                    required
-                  />
+                  <Select
+                    value={formData.type}
+                    onValueChange={handleSelectChange}
+                  >
+                    <SelectTrigger className="w-full px-4 py-4 h-auto border border-white/20 bg-white/5 backdrop-blur-sm text-foreground focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none rounded-xl">
+                      <SelectValue placeholder="Select the purpose of your message" />
+                    </SelectTrigger>
+                    <SelectContent className="glass-morphism border border-white/20 rounded-xl">
+                      <SelectItem value="collaboration" className="focus:bg-white/10 rounded-lg">
+                        <div className="flex items-center gap-2">
+                          <Send className="h-4 w-4" />
+                          <span>Collaboration / Work Together</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="feedback" className="focus:bg-white/10 rounded-lg">
+                        <div className="flex items-center gap-2">
+                          <MessageSquare className="h-4 w-4" />
+                          <span>Project Feedback</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="suggestion" className="focus:bg-white/10 rounded-lg">
+                        <div className="flex items-center gap-2">
+                          <Star className="h-4 w-4" />
+                          <span>Website Suggestion</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="question" className="focus:bg-white/10 rounded-lg">
+                        <div className="flex items-center gap-2">
+                          <Heart className="h-4 w-4" />
+                          <span>Ask a Question</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="bug" className="focus:bg-white/10 rounded-lg">
+                        <div className="flex items-center gap-2">
+                          <Code className="h-4 w-4" />
+                          <span>Report a Bug</span>
+                        </div>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
-              </div>
-              
-              <div>
-                <label htmlFor="type" className="block text-sm font-medium text-navy-800 dark:text-navy-200 mb-2">
-                  Purpose
-                </label>
-                <Select
-                  value={formData.type}
-                  onValueChange={handleSelectChange}
-                >
-                  <SelectTrigger className="w-full px-4 py-3 h-auto border border-navy-200 dark:border-navy-600 bg-transparent text-navy-900 dark:text-white focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all outline-none">
-                    <SelectValue placeholder="Select the purpose of your message" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white dark:bg-navy-800 border border-navy-200 dark:border-navy-700">
-                    <SelectItem value="collaboration" className="focus:bg-navy-100 dark:focus:bg-navy-700">
-                      <div className="flex items-center gap-2">
-                        <Send className="h-4 w-4" />
-                        <span>Collaboration / Work Together</span>
-                      </div>
-                    </SelectItem>
-                    <SelectItem value="feedback" className="focus:bg-navy-100 dark:focus:bg-navy-700">
-                      <div className="flex items-center gap-2">
-                        <MessageSquare className="h-4 w-4" />
-                        <span>Project Feedback</span>
-                      </div>
-                    </SelectItem>
-                    <SelectItem value="suggestion" className="focus:bg-navy-100 dark:focus:bg-navy-700">
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4" />
-                        <span>Website Suggestion</span>
-                      </div>
-                    </SelectItem>
-                    <SelectItem value="question" className="focus:bg-navy-100 dark:focus:bg-navy-700">
-                      <div className="flex items-center gap-2">
-                        <Heart className="h-4 w-4" />
-                        <span>Ask a Question</span>
-                      </div>
-                    </SelectItem>
-                    <SelectItem value="bug" className="focus:bg-navy-100 dark:focus:bg-navy-700">
-                      <div className="flex items-center gap-2">
-                        <Code className="h-4 w-4" />
-                        <span>Report a Bug</span>
-                      </div>
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-navy-800 dark:text-navy-200 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-navy-200 dark:border-navy-600 bg-transparent text-navy-900 dark:text-white focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all outline-none resize-none"
-                  placeholder="Your message"
-                  required
-                ></textarea>
-              </div>
-              
-              <div className="flex justify-end">
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-3">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={6}
+                    className="w-full px-4 py-4 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm text-foreground focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none resize-none"
+                    placeholder="Tell me about your project or idea..."
+                    required
+                  ></textarea>
+                </div>
+                
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-gold-500 hover:bg-gold-600 text-white px-8 py-6 rounded-lg font-medium transition-all disabled:opacity-70 hover:scale-105 transform h-auto"
+                  className="w-full bg-gradient-to-r from-accent via-blue-500 to-purple-500 text-white py-4 rounded-xl font-semibold text-lg shadow-2xl magnetic-hover neon-glow disabled:opacity-70"
                 >
                   {isSubmitting ? (
-                    <>Processing<div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin ml-2"></div></>
+                    <>
+                      Processing
+                      <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-2"></div>
+                    </>
                   ) : (
-                    <>Send Message {getIconForType(formData.type)}</>
+                    <>
+                      Send Message
+                      {getIconForType(formData.type)}
+                    </>
                   )}
                 </Button>
-              </div>
-            </form>
+              </form>
+            </motion.div>
           </div>
         </div>
       </div>

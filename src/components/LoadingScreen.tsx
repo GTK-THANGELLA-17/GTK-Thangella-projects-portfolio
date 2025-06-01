@@ -1,5 +1,6 @@
+
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface LoadingScreenProps {
   progress?: number;
@@ -7,171 +8,271 @@ interface LoadingScreenProps {
 
 const LoadingScreen = ({ progress = 0 }: LoadingScreenProps) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [opacity, setOpacity] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const loadingSteps = [
+    "Initializing System...",
+    "Loading Components...",
+    "Connecting APIs...",
+    "Optimizing Performance...",
+    "Finalizing Setup..."
+  ];
 
   useEffect(() => {
+    const stepIndex = Math.floor((progress / 100) * loadingSteps.length);
+    setCurrentStep(Math.min(stepIndex, loadingSteps.length - 1));
+
     if (progress >= 100) {
-      setOpacity(0);
       const timer = setTimeout(() => {
         setIsVisible(false);
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [progress]);
-
-  // Digital circuit lines for the tech effect
-  const circuitLines = [
-    'M10,10 L50,10 L50,50 L90,50',
-    'M10,50 L30,50 L30,90',
-    'M50,50 L50,90',
-    'M70,10 L70,30 L90,30',
-    'M10,70 L30,70 L30,50',
-    'M50,70 L90,70',
-    'M70,50 L70,90'
-  ];
+  }, [progress, loadingSteps.length]);
 
   return (
-    isVisible && (
-      <motion.div 
-        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-iceblue-100 dark:bg-charcoal-600"
-        style={{ 
-          opacity: opacity,
-          transition: 'opacity 1s ease-in-out'
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      >
-        {/* Digital circuit pattern */}
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-          {circuitLines.map((path, i) => (
-            <motion.path
-              key={i}
-              d={path}
-              stroke="currentColor"
-              className="text-accent"
-              strokeWidth="0.5"
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ 
-                pathLength: 1, 
-                opacity: 0.8,
-                transition: { 
-                  duration: 1.5, 
-                  delay: i * 0.2,
-                  ease: "easeInOut" 
-                }
-              }}
-            />
-          ))}
-        </svg>
-
-        {/* Central data visualization */}
-        <div className="relative z-10 mb-12">
-          <motion.div 
-            className="w-40 h-40 flex items-center justify-center relative"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            {/* Tech rings */}
-            {[...Array(3)].map((_, i) => (
-              <motion.div 
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div 
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-background via-secondary to-background overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Background Grid Animation */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/10 to-transparent skew-x-12 transform animate-pulse"></div>
+            {[...Array(20)].map((_, i) => (
+              <motion.div
                 key={i}
-                className="absolute border rounded-full"
-                style={{ 
-                  width: `${100 + i * 30}%`, 
-                  height: `${100 + i * 30}%`,
-                  borderWidth: 2,
-                  borderColor: `rgba(var(--accent) / ${0.4 - i * 0.1})`,
+                className="absolute w-px h-full bg-gradient-to-b from-transparent via-accent/30 to-transparent"
+                style={{ left: `${i * 5}%` }}
+                animate={{
+                  opacity: [0.3, 1, 0.3],
+                  scaleY: [0.5, 1, 0.5]
                 }}
-                animate={{ 
-                  rotate: 360 * (i % 2 === 0 ? 1 : -1),
-                  scale: [1, 1.05, 1]
-                }}
-                transition={{ 
-                  duration: 8 + i * 4, 
-                  ease: "linear", 
-                  repeat: Infinity
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.1
                 }}
               />
             ))}
+          </div>
 
-            {/* Core element */}
+          {/* Central Logo Animation */}
+          <div className="relative z-10 mb-16">
             <motion.div 
-              className="w-24 h-24 bg-accent/40 backdrop-blur-sm rounded-xl relative flex items-center justify-center border border-accent/50"
-              animate={{ 
-                rotate: [0, 90, 180, 270, 360],
-                borderRadius: ["24%", "40%", "24%", "40%", "24%"]
-              }}
+              className="relative"
+              initial={{ scale: 0, rotateY: 180 }}
+              animate={{ scale: 1, rotateY: 0 }}
               transition={{ 
-                duration: 8,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "reverse"
+                delay: 0.3, 
+                duration: 1.2,
+                type: "spring",
+                stiffness: 200,
+                damping: 20
               }}
             >
-              <div className="text-white font-bold text-2xl">GT</div>
-              
-              {/* Pulse effect */}
+              {/* Rotating outer rings */}
+              {[...Array(3)].map((_, i) => (
+                <motion.div 
+                  key={i}
+                  className="absolute rounded-full border-2"
+                  style={{ 
+                    width: `${140 + i * 30}px`, 
+                    height: `${140 + i * 30}px`,
+                    borderColor: `hsl(var(--accent) / ${0.4 - i * 0.1})`,
+                    left: `${-15 - i * 15}px`,
+                    top: `${-15 - i * 15}px`,
+                  }}
+                  animate={{ 
+                    rotate: 360,
+                    scale: [1, 1.05, 1]
+                  }}
+                  transition={{ 
+                    rotate: {
+                      duration: 8 + i * 2,
+                      repeat: Infinity,
+                      ease: "linear"
+                    },
+                    scale: {
+                      duration: 2,
+                      repeat: Infinity
+                    }
+                  }}
+                />
+              ))}
+
+              {/* Main GT stamp with technical effect */}
               <motion.div 
-                className="absolute inset-0 rounded-xl border-2 border-accent/60"
+                className="w-24 h-24 bg-gradient-to-br from-accent via-blue-500 to-purple-500 backdrop-blur-sm rounded-2xl relative flex items-center justify-center border-2 border-accent/50 shadow-2xl overflow-hidden"
+                initial={{ 
+                  scale: 0,
+                  opacity: 0
+                }}
                 animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.7, 0, 0.7]
+                  scale: 1,
+                  opacity: 1
                 }}
                 transition={{ 
-                  duration: 2,
-                  repeat: Infinity
+                  delay: 0.8,
+                  duration: 0.8,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 15
                 }}
-              />
-            </motion.div>
-          </motion.div>
-        </div>
+              >
+                {/* Animated background pattern */}
+                <div className="absolute inset-0">
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                      style={{ top: `${i * 20}%` }}
+                      animate={{
+                        x: [-100, 100],
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: i * 0.2
+                      }}
+                    />
+                  ))}
+                </div>
 
-        {/* Technical loading progress bar */}
-        <div className="w-64 mb-3 relative z-10">
-          <div className="h-1.5 w-full bg-iceblue-300/30 dark:bg-charcoal-700/30 rounded-full overflow-hidden">
-            <motion.div 
-              className="h-full bg-accent rounded-full"
-              style={{ width: `${progress}%` }}
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            />
+                <motion.div 
+                  className="text-white font-bold text-2xl relative z-10"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.2, duration: 0.6 }}
+                >
+                  GT
+                </motion.div>
+                
+                {/* Stamp effect */}
+                <motion.div 
+                  className="absolute inset-0 rounded-2xl border-4 border-white/60"
+                  initial={{ scale: 1, opacity: 0 }}
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    opacity: [0, 0.8, 0]
+                  }}
+                  transition={{ 
+                    delay: 1.0,
+                    duration: 1.2,
+                    times: [0, 0.5, 1]
+                  }}
+                />
+              </motion.div>
+            </motion.div>
           </div>
-          <div className="mt-2 text-center text-charcoal-600 dark:text-platinum-200 text-sm font-mono">
-            {Math.round(progress)}%
+
+          {/* Technical Progress Interface */}
+          <div className="w-96 mb-8 relative z-10">
+            {/* Terminal-style header */}
+            <div className="bg-black/20 dark:bg-white/10 rounded-t-lg px-4 py-2 border border-accent/20">
+              <div className="flex items-center gap-2">
+                <div className="flex gap-1">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <span className="text-xs font-mono text-foreground/70 ml-2">terminal</span>
+              </div>
+            </div>
+
+            {/* Progress area */}
+            <div className="bg-black/10 dark:bg-white/5 rounded-b-lg p-6 border-x border-b border-accent/20">
+              {/* Current step */}
+              <div className="mb-4">
+                <motion.div
+                  className="text-accent font-mono text-sm"
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  {loadingSteps[currentStep]}
+                </motion.div>
+              </div>
+
+              {/* Progress bar */}
+              <div className="h-3 w-full bg-white/10 dark:bg-black/20 rounded-full overflow-hidden backdrop-blur-sm border border-white/20 mb-4">
+                <motion.div 
+                  className="h-full bg-gradient-to-r from-accent via-blue-500 to-purple-500 rounded-full relative overflow-hidden"
+                  style={{ width: `${progress}%` }}
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                  {/* Scanning line effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                    animate={{
+                      x: [-100, 300]
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                </motion.div>
+              </div>
+
+              {/* Progress stats */}
+              <div className="flex justify-between items-center text-xs font-mono text-foreground/60">
+                <span>{Math.round(progress)}% Complete</span>
+                <span>{currentStep + 1}/{loadingSteps.length} Steps</span>
+              </div>
+            </div>
           </div>
-        </div>
-        
-        {/* Profile info */}
-        <motion.div 
-          className="text-center relative z-10 max-w-md px-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          <h2 className="text-charcoal-600 dark:text-platinum-100 text-3xl md:text-4xl font-playfair mb-2">
-            G. Thangella
-          </h2>
-          <motion.p 
-            className="text-accent font-mono text-sm tracking-wide"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
+          
+          {/* Profile info */}
+          <motion.div 
+            className="text-center relative z-10 max-w-md px-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
           >
-            ⚡💼 Entrepreneur | 💻 CS Mind | 🌍 Explorer
-          </motion.p>
-          <p className="text-charcoal-500 dark:text-platinum-300 mt-2 text-xs max-w-sm mx-auto">
-            Creative Visionary | Gadget & Tech Enthusiast | 🚀 Crafting & transforming ideas into solutions
-          </p>
+            <h2 className="text-foreground text-3xl md:text-4xl font-playfair mb-3 bg-gradient-to-r from-accent to-blue-500 bg-clip-text text-transparent">
+              G. Thangella
+            </h2>
+            <motion.p 
+              className="text-accent font-mono text-sm tracking-wide"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              Creative Developer
+            </motion.p>
+          </motion.div>
+
+          {/* Binary rain effect */}
+          <div className="absolute inset-0 pointer-events-none opacity-10">
+            {[...Array(30)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute text-accent text-xs font-mono"
+                style={{ left: `${Math.random() * 100}%` }}
+                animate={{
+                  y: [-50, window.innerHeight + 50],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2
+                }}
+              >
+                {Math.random() > 0.5 ? '1' : '0'}
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
-      </motion.div>
-    )
+      )}
+    </AnimatePresence>
   );
 };
 

@@ -25,7 +25,7 @@ const Footer = () => {
               <Github className="h-5 w-5" />
             </a>
             <a
-              href="https://www.linkedin.com/in/gthangella/"
+              href="https://thangella-itgc-portfolio.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-navy-300 hover:text-gold-400 transition-colors"
@@ -34,7 +34,7 @@ const Footer = () => {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="https://www.instagram.com/g_thangella_k/"
+              href="https://www.instagram.com/g_thangella_k/#"
               target="_blank"
               rel="noopener noreferrer"
               className="text-navy-300 hover:text-gold-400 transition-colors"
