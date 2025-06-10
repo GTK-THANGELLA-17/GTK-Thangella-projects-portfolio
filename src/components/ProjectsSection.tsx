@@ -7,34 +7,7 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 
 const projects = [
-  {
-    id: 1,
-    title: "MoviePulse",
-    description: "A data-driven platform providing real-time audience insights and analytics for content creators.",
-    tags: ["Vite", "TypeScript", "React", "Shad CN UI", "Tailwind CSS", "Node.js"],
-    image: "/home.png",
-    demoLink: "https://moviepulse-nu.vercel.app/",
-    githubLink: "https://github.com/example",
-    details: {
-      fullDescription: "MoviePulse is a dynamic platform that empowers content creators, filmmakers, and marketers with real-time, data-driven insights into audience preferences. Utilizing advanced analytics, it aggregates feedback from global audiences across films, TV shows, YouTube videos, and streaming platforms, helping creators tailor their content to meet the evolving demands of viewers. The platform provides interactive visualizations and trend analysis, making it easier for creators to understand and act on audience preferences.",
-      benefits: [
-        "Global audience insights across films, TV shows, and streaming platforms",
-        "Real-time analytics for quick decision-making",
-        "Trend tracking to stay ahead of emerging content preferences",
-        "Interactive data visualizations to simplify complex information"
-      ],
-      realWorldImpact: "MoviePulse is revolutionizing the entertainment industry by providing creators with powerful tools to understand global audience preferences. It is helping content creators and streaming platforms make informed, data-driven decisions, ultimately leading to more engaging and successful content.",
-      images: [
-        "/home.png",
-        "/features.png",
-        "/insights.png",
-        "/importance.png",
-        "/cast-your-opinion.png",
-        "/stats.png"
-      ],
-      collaborateInfo: "Hi there! I'm the solo developer working on MoviePulse. If you're passionate about helping content creators and skilled in Node.js backend development, I would love to collaborate! I'm looking for backend developers to improve, optimize, and scale the system for real-time analytics and audience feedback."
-    }
-  },
+  
   {
     id: 2,
     title: "Code Craft Toolkit",
@@ -121,30 +94,6 @@ const projects = [
     "realWorldImpact": "Need2Fix transforms the traditional service market by digitizing and standardizing access to quality service providers, creating employment opportunities, empowering small businesses, and supporting local economies across India.",
     "images": [
       "/need2fix-home.png"
-    ]
-  }
-},
-{
-  "id": 5,
-  "title": "CineLaunch",
-  "description": "Empowering filmmakers worldwide to fund and create their cinematic visions through global crowdfunding and community support.",
-  "tags": ["React", "TypeScript", "Crowdfunding", "Film", "Community"],
-  "image": "/cine-launch.png",
-  "demoLink": "https://cine-launch-v1.vercel.app/",
-  "githubLink": "https://github.com/your-github-link",
-  "details": {
-    "fullDescription": "CineLaunch is a comprehensive crowdfunding platform designed to empower filmmakers by connecting them with a global community of film enthusiasts and industry investors. It offers multiple funding pathways including crowdfunding, investor funding, and grant programs to help filmmakers bring their creative visions to life.",
-    "benefits": [
-      "Multiple funding options tailored to your project’s needs: crowdfunding, investor funding, and grants.",
-      "High success rates with a supportive global community of film lovers and professionals.",
-      "Clear guidance and step-by-step process to prepare, launch, and promote your campaign.",
-      "Tools to craft engaging campaigns with compelling visuals and rewards.",
-      "Access to investor networks and grant programs for additional financing."
-    ],
-    "realWorldImpact": "CineLaunch democratizes film production by enabling creators worldwide to finance projects without relying on traditional gatekeepers. This fosters diverse storytelling and supports independent filmmakers in bringing fresh voices to the global cinema landscape.",
-    "callToAction": "Join thousands of filmmakers who have successfully funded their projects through CineLaunch. Submit your project today and start your journey to bring your film dreams to life!",
-    "images": [
-      "/cine-launch.png"
     ]
   }
 }
