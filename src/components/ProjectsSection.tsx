@@ -96,6 +96,31 @@ const projects = [
       "/need2fix-home.png"
     ]
   }
+},
+{
+  "id": 5,
+  "title": "CineLaunch",
+  "description": "Empowering filmmakers worldwide to fund and create their cinematic visions through global crowdfunding and community support.",
+  "tags": ["React", "TypeScript", "Crowdfunding", "Film", "Community"],
+  "image": "/cine-launch.png",
+  "demoLink": "https://cine-launch-v1.vercel.app/",
+  "githubLink": "https://github.com/your-github-link",
+  "details": {
+    "fullDescription": "CineLaunch is a comprehensive crowdfunding platform designed to empower filmmakers by connecting them with a global community of film enthusiasts and industry investors. It offers multiple funding pathways including crowdfunding, investor funding, and grant programs to help filmmakers bring their creative visions to life.",
+    "benefits": [
+      "Multiple funding options tailored to your project’s needs: crowdfunding, investor funding, and grants.",
+      "High success rates with a supportive global community of film lovers and professionals.",
+      "Clear guidance and step-by-step process to prepare, launch, and promote your campaign.",
+      "Tools to craft engaging campaigns with compelling visuals and rewards.",
+      "Access to investor networks and grant programs for additional financing."
+    ],
+    "realWorldImpact": "CineLaunch democratizes film production by enabling creators worldwide to finance projects without relying on traditional gatekeepers. This fosters diverse storytelling and supports independent filmmakers in bringing fresh voices to the global cinema landscape.",
+    "callToAction": "Join thousands of filmmakers who have successfully funded their projects through CineLaunch. Submit your project today and start your journey to bring your film dreams to life!",
+    "images": [
+      "/cine-launch.png"
+    ]
+    
+  }
 }
 
 ];
