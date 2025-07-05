@@ -11,7 +11,7 @@ const AboutSection = () => {
 
   const images = [
     "https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=800",
-    "/Image1.jpg",
+    "/Image1.png",
     "/Image2.png",
     "/Image3.png",
     "/Image4.png",
