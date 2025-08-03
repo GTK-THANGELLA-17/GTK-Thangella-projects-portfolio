@@ -19,30 +19,30 @@ const AboutSection = () => {
   ];
 
   const socialLinks = [
-    { 
-      name: 'WhatsApp', 
-      icon: MessageCircle, 
-      href: 'https://wa.me/your-number',
-      color: 'hover:text-green-500' 
-    },
-    { 
-      name: 'Portfolio', 
-      icon: FileText, 
-      href: '#projects',
-      color: 'hover:text-blue-500' 
-    },
-    { 
-      name: 'LinkedIn', 
-      icon: Linkedin, 
-      href: 'https://linkedin.com/in/your-profile',
-      color: 'hover:text-blue-600' 
-    },
-    { 
-      name: 'Instagram', 
-      icon: Instagram, 
-      href: 'https://instagram.com/your-handle',
-      color: 'hover:text-pink-500' 
-    },
+    {
+    name: 'WhatsApp',
+    icon: MessageCircle,
+    href: 'https://wa.me/918499090369',
+    color: 'hover:text-green-500'
+  },
+  {
+    name: 'Portfolio',
+    icon: FileText,
+    href: 'https://thangella-itgc-portfolio.vercel.app/',
+    color: 'hover:text-blue-500'
+  },
+  {
+    name: 'LinkedIn',
+    icon: Linkedin,
+    href: 'https://linkedin.com/',
+    color: 'hover:text-blue-600'
+  },
+  {
+    name: 'Instagram',
+    icon: Instagram,
+    href: 'https://www.instagram.com/g_thangella_k/#',
+    color: 'hover:text-pink-500'
+  }
   ];
 
   const skills = [
