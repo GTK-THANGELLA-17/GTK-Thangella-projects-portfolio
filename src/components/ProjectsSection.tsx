@@ -7,7 +7,6 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 
 const projects = [
-  
   {
     id: 2,
     title: "Code Craft Toolkit",
@@ -53,76 +52,74 @@ const projects = [
     }
   },
   {
-  "id": 4,
-  "title": "Reel Revival",
-  "description": "A platform to book private screenings of classic and hard-to-find films, offering a premium cinema experience while supporting local theaters.",
-  "tags": ["React", "TypeScript", "Vite", "TailwindCSS", "Node.js"],
-  "image": "/Reel-Revival.png",
-  "demoLink": "https://reel-revival.vercel.app/",
-  "githubLink": "https://github.com/your-github-link",
-  "details": {
-    "fullDescription": "Reel Revival connects movie enthusiasts with theaters for private screenings of classic films or movies missed during their theatrical run. We provide a customizable viewing experience in premium theaters, supporting local businesses during non-peak times. This is a concept that I am working on developing, and I would love to hear your feedback!",
-    "benefits": [
-      "Private Screenings: Book a theater for an exclusive movie experience.",
-      "Classic Movie Selection: Watch films that are no longer in theaters.",
-      "Customizable Events: Perfect for special occasions like birthdays or anniversaries.",
-      "Support for Local Theaters: Keep cinemas alive during off-peak periods.",
-      "Premium Experience: State-of-the-art projection and sound."
-    ],
-    "realWorldImpact": "Reel Revival allows film lovers to relive movie magic on the big screen while supporting local theaters, fostering a community of movie enthusiasts who can enjoy cinema in a private, memorable setting.",
-    "images": [
-      "/Reel-Revival.png"
-    ]
-  }
-},
+    id: 4,
+    title: "Reel Revival",
+    description: "Reel Revival lets you book private screenings of classic and hard-to-find films, creating a premium movie experience while supporting local theaters. Love the idea or have suggestions? Feel free to reach out!",
+    tags: ["React", "TypeScript", "Vite", "TailwindCSS", "Node.js"],
+    image: "/Reel-Revival.png",
+    demoLink: "https://reel-revival.vercel.app/",
+    githubLink: "https://github.com/your-github-link",
+    details: {
+      fullDescription: "Reel Revival connects movie enthusiasts with theaters for private screenings of classic films or movies missed during their theatrical run. We provide a customizable viewing experience in premium theaters, supporting local businesses during non-peak times. This is a concept that I am working on developing, and I would love to hear your feedback!",
+      benefits: [
+        "Private Screenings: Book a theater for an exclusive movie experience.",
+        "Classic Movie Selection: Watch films that are no longer in theaters.",
+        "Customizable Events: Perfect for special occasions like birthdays or anniversaries.",
+        "Support for Local Theaters: Keep cinemas alive during off-peak periods.",
+        "Premium Experience: State-of-the-art projection and sound."
+      ],
+      realWorldImpact: "Reel Revival allows film lovers to relive movie magic on the big screen while supporting local theaters, fostering a community of movie enthusiasts who can enjoy cinema in a private, memorable setting.",
+      images: [
+        "/Reel-Revival.png"
+      ]
+    }
+  },
   {
-  "id": 5,
-  "title": "Need2Fix",
-  "description": "A smart service provider platform connecting verified professionals with customers for quick, reliable, location-based services.",
-  "tags": ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vite"],
-  "image": "/need2fix-home.png",
-  "demoLink": "https://need2fix-v1.vercel.app/",
-  "githubLink": "https://github.com/your-github-link",
-  "details": {
-    "fullDescription": "Need2Fix is a revolutionary digital marketplace designed to bridge the gap between skilled service providers and customers seeking trusted professionals. It offers instant location-based matching, verified profiles, and direct communication via WhatsApp or phone calls, making it easier than ever to find reliable help.",
-    "benefits": [
-      "Smart GPS-enabled location detection to find services in your exact area.",
-      "Verified and background-checked professionals with detailed profiles and ratings.",
-      "Seamless communication through WhatsApp integration and one-click calling.",
-      "Mobile-first, fast-loading, and responsive design optimized for all devices."
-    ],
-    "realWorldImpact": "Need2Fix transforms the traditional service market by digitizing and standardizing access to quality service providers, creating employment opportunities, empowering small businesses, and supporting local economies across India.",
-    "images": [
-      "/need2fix-home.png"
-    ]
+    id: 5,
+    title: "Need2Fix",
+    description: "A smart service provider platform connecting verified professionals with customers for quick, reliable, location-based services.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vite"],
+    image: "/need2fix-home.png",
+    demoLink: "https://need2fix-v1.vercel.app/",
+    githubLink: "https://github.com/your-github-link",
+    details: {
+      fullDescription: "Need2Fix is a revolutionary digital marketplace designed to bridge the gap between skilled service providers and customers seeking trusted professionals. It offers instant location-based matching, verified profiles, and direct communication via WhatsApp or phone calls, making it easier than ever to find reliable help.",
+      benefits: [
+        "Smart GPS-enabled location detection to find services in your exact area.",
+        "Verified and background-checked professionals with detailed profiles and ratings.",
+        "Seamless communication through WhatsApp integration and one-click calling.",
+        "Mobile-first, fast-loading, and responsive design optimized for all devices."
+      ],
+      realWorldImpact: "Need2Fix transforms the traditional service market by digitizing and standardizing access to quality service providers, creating employment opportunities, empowering small businesses, and supporting local economies across India.",
+      images: [
+        "/need2fix-home.png"
+      ]
+    }
+  },
+  {
+    id: 6,
+    title: "CineLaunch",
+    description: "Empowering filmmakers worldwide to fund and create their cinematic visions through global crowdfunding and community support.",
+    tags: ["React", "TypeScript", "Crowdfunding", "Film", "Community"],
+    image: "/cine-launch.png",
+    demoLink: "https://cine-launch-v1.vercel.app/",
+    githubLink: "https://github.com/your-github-link",
+    details: {
+      fullDescription: "CineLaunch is a comprehensive crowdfunding platform designed to empower filmmakers by connecting them with a global community of film enthusiasts and industry investors. It offers multiple funding pathways including crowdfunding, investor funding, and grant programs to help filmmakers bring their creative visions to life.",
+      benefits: [
+        "Multiple funding options tailored to your project's needs: crowdfunding, investor funding, and grants.",
+        "High success rates with a supportive global community of film lovers and professionals.",
+        "Clear guidance and step-by-step process to prepare, launch, and promote your campaign.",
+        "Tools to craft engaging campaigns with compelling visuals and rewards.",
+        "Access to investor networks and grant programs for additional financing."
+      ],
+      realWorldImpact: "CineLaunch democratizes film production by enabling creators worldwide to finance projects without relying on traditional gatekeepers. This fosters diverse storytelling and supports independent filmmakers in bringing fresh voices to the global cinema landscape.",
+      callToAction: "Join thousands of filmmakers who have successfully funded their projects through CineLaunch. Submit your project today and start your journey to bring your film dreams to life!",
+      images: [
+        "/cine-launch.png"
+      ]
+    }
   }
-},
-{
-  "id": 5,
-  "title": "CineLaunch",
-  "description": "Empowering filmmakers worldwide to fund and create their cinematic visions through global crowdfunding and community support.",
-  "tags": ["React", "TypeScript", "Crowdfunding", "Film", "Community"],
-  "image": "/cine-launch.png",
-  "demoLink": "https://cine-launch-v1.vercel.app/",
-  "githubLink": "https://github.com/your-github-link",
-  "details": {
-    "fullDescription": "CineLaunch is a comprehensive crowdfunding platform designed to empower filmmakers by connecting them with a global community of film enthusiasts and industry investors. It offers multiple funding pathways including crowdfunding, investor funding, and grant programs to help filmmakers bring their creative visions to life.",
-    "benefits": [
-      "Multiple funding options tailored to your project’s needs: crowdfunding, investor funding, and grants.",
-      "High success rates with a supportive global community of film lovers and professionals.",
-      "Clear guidance and step-by-step process to prepare, launch, and promote your campaign.",
-      "Tools to craft engaging campaigns with compelling visuals and rewards.",
-      "Access to investor networks and grant programs for additional financing."
-    ],
-    "realWorldImpact": "CineLaunch democratizes film production by enabling creators worldwide to finance projects without relying on traditional gatekeepers. This fosters diverse storytelling and supports independent filmmakers in bringing fresh voices to the global cinema landscape.",
-    "callToAction": "Join thousands of filmmakers who have successfully funded their projects through CineLaunch. Submit your project today and start your journey to bring your film dreams to life!",
-    "images": [
-      "/cine-launch.png"
-    ]
-    
-  }
-}
-
 ];
 
 const ProjectsSection = () => {

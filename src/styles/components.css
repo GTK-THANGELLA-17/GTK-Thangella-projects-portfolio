@@ -1,0 +1,214 @@
+
+@layer utilities {
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .dark-mode-card {
+    @apply dark:bg-gradient-to-br dark:from-slate-800/50 dark:to-slate-900/50 dark:border-slate-700/50 dark:shadow-xl dark:shadow-blue-500/10;
+  }
+
+  .light-mode-card {
+    @apply bg-gradient-to-br from-white/80 to-slate-50/80 border-slate-200/50 shadow-xl shadow-blue-500/5;
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 4s ease infinite;
+  }
+
+  /* Simplified Premium Neon Border Effects */
+  .premium-neon-border {
+    background: linear-gradient(45deg, 
+      transparent 0%, 
+      rgba(14, 165, 233, 0.3) 50%, 
+      transparent 100%);
+    filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.2));
+  }
+
+  .dark .premium-neon-border {
+    background: linear-gradient(45deg, 
+      transparent 0%, 
+      rgba(200, 240, 255, 0.4) 50%, 
+      transparent 100%);
+    filter: drop-shadow(0 0 15px rgba(200, 240, 255, 0.3));
+  }
+
+  /* Enhanced About Section Cards */
+  .about-skill-card {
+    @apply relative overflow-hidden p-4 sm:p-6 rounded-2xl transition-all duration-500;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.9) 0%, 
+      rgba(248, 250, 252, 0.8) 100%);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .about-skill-card {
+    background: linear-gradient(135deg, 
+      rgba(30, 41, 59, 0.8) 0%, 
+      rgba(15, 23, 42, 0.9) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(59, 130, 246, 0.1);
+  }
+
+  .neon-border {
+    position: relative;
+  }
+
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    padding: 2px;
+    background: linear-gradient(45deg, transparent, #0ea5e9, transparent);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .dark .neon-border:hover::before {
+    opacity: 1;
+  }
+
+  /* Enhanced glassmorphism */
+  .glass-premium {
+    @apply backdrop-blur-2xl bg-white/5 dark:bg-black/10 border border-white/10 dark:border-white/5 shadow-2xl;
+    backdrop-filter: blur(20px);
+  }
+
+  /* Premium button effects */
+  .btn-premium {
+    @apply relative overflow-hidden bg-gradient-to-r from-accent via-blue-500 to-purple-500 text-white font-semibold rounded-full transition-all duration-300;
+    box-shadow: 
+      0 4px 15px 0 rgba(59, 130, 246, 0.3),
+      0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mobile touch improvements */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Better mobile scrolling */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Mobile-first responsive utilities */
+  @media (max-width: 640px) {
+    .premium-card {
+      @apply p-3 rounded-xl;
+    }
+    
+    .magnetic-hover:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    /* Improve touch targets on mobile */
+    .mobile-touch-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Tablet optimizations */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .section-container {
+      @apply px-6 py-16;
+    }
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 sm:py-20 lg:py-32;
+  }
+
+  .glass-morphism {
+    @apply backdrop-blur-xl bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 shadow-2xl;
+  }
+
+  .premium-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--background)) 0%, 
+      hsl(var(--secondary)) 50%, 
+      hsl(var(--background)) 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .premium-card {
+    @apply relative overflow-hidden rounded-xl sm:rounded-2xl bg-white/80 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-2xl transition-all duration-500 hover:shadow-3xl;
+  }
+
+  .premium-card:hover {
+    @apply scale-[1.01] sm:scale-[1.02];
+  }
+
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .magnetic-hover {
+    transition: transform 0.3s ease;
+  }
+
+  .magnetic-hover:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  .premium-text-gradient {
+    @apply bg-gradient-to-r from-accent via-blue-500 to-purple-500 bg-clip-text text-transparent;
+  }
+
+  .neon-glow {
+    box-shadow: 
+      0 0 20px rgba(59, 130, 246, 0.3),
+      0 0 40px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Enhanced mobile compatibility */
+  @media (max-width: 640px) {
+    .section-container {
+      @apply px-4 py-12;
+    }
+    
+    .neon-glow {
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+    }
+
+    /* Ensure proper spacing on mobile */
+    .premium-card {
+      margin-bottom: 1rem;
+    }
+
+    /* Better mobile text sizing */
+    .mobile-text-responsive {
+      font-size: clamp(0.875rem, 2.5vw, 1rem);
+    }
+  }
+
+  /* Tablet specific optimizations */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .premium-card:hover {
+      @apply scale-[1.015];
+    }
+  }
+
+  /* Desktop enhancements */
+  @media (min-width: 1025px) {
+    .premium-card:hover {
+      @apply scale-[1.02];
+    }
+  }
+}

@@ -8,16 +8,16 @@ interface AnimateOnScrollProps {
   threshold?: number;
   once?: boolean;
   staggerChildren?: number;
-  variant?: 'fade' | 'slide' | 'scale' | 'flip' | 'techReveal' | 'codeBlock';
+  variant?: 'fade' | 'slide' | 'scale' | 'flip' | 'techReveal' | 'codeBlock' | 'premium';
   className?: string;
 }
 
 const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ 
   children, 
-  threshold = 0.1,
+  threshold = 0.15,
   once = true,
-  staggerChildren = 0.15,
-  variant = 'techReveal',
+  staggerChildren = 0.2,
+  variant = 'premium',
   className = ''
 }) => {
   return (
@@ -27,12 +27,17 @@ const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
       whileInView="visible"
       viewport={{ 
         once, 
-        amount: threshold // Using 'amount' instead of 'threshold' for framer-motion ViewportOptions
+        amount: threshold
       }}
       variants={{
+        hidden: {
+          opacity: 0
+        },
         visible: {
+          opacity: 1,
           transition: {
-            staggerChildren
+            staggerChildren,
+            delayChildren: 0.1
           }
         }
       }}
@@ -42,7 +47,7 @@ const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
           return (
             <ScrollReveal
               variant={variant}
-              delay={i * 0.08}
+              delay={i * 0.1}
               threshold={threshold}
               once={once}
             >
