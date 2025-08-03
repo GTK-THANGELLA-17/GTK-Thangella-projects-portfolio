@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,10 +20,30 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   handleAIAssistantClick,
   handleLinkClick,
 }) => {
+  // Unified click handler for links and assistant
+  const handleMenuOptionClick = async (
+    e: React.MouseEvent,
+    href: string,
+    isAIAssistant: boolean
+  ) => {
+    // Close menu first
+    setMobileMenuOpen(false);
+
+    // Wait for animation to complete (matches exit transition duration)
+    await new Promise((resolve) => setTimeout(resolve, 400));
+
+    if (isAIAssistant) {
+      handleAIAssistantClick(e); // Trigger assistant opening
+    } else {
+      handleLinkClick(href); // Navigate or scroll to section
+    }
+  };
+
   return (
     <AnimatePresence>
       {mobileMenuOpen && (
         <>
+          {/* Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -33,6 +52,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9998] lg:hidden"
             onClick={() => setMobileMenuOpen(false)}
           />
+
+          {/* Sliding Menu Panel */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -43,7 +64,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             <div className="flex flex-col h-full">
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-border shrink-0">
-                <motion.span 
+                <motion.span
                   className="text-lg font-playfair font-bold premium-text-gradient"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -66,43 +87,41 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
               {/* Navigation Links */}
               <div className="flex-1 py-6 px-6 overflow-y-auto">
                 <ul className="space-y-4">
-                  {links.map((link, index) => (
-                    <motion.li 
-                      key={link.name}
-                      initial={{ opacity: 0, x: 30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 * (index + 1), duration: 0.3 }}
-                    >
-                      <button
-                        onClick={(e) => {
-                          if (link.name === 'AI Assistant') {
-                            handleAIAssistantClick(e);
-                          } else {
-                            handleLinkClick(link.href);
-                          }
-                        }}
-                        className={cn(
-                          "flex items-center gap-3 py-4 px-6 text-lg font-medium transition-all duration-300 relative rounded-xl group cursor-pointer w-full text-left",
-                          activeSection === link.href.substring(1) ? 
-                            "text-accent bg-accent/10 shadow-lg" : 
-                            "text-foreground/80 hover:text-accent hover:bg-accent/5"
-                        )}
+                  {links
+                    .filter(link => link.name !== 'AI Assistant')  // <-- filter out AI Assistant here
+                    .map((link, index) => (
+                      <motion.li
+                        key={link.name}
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 * (index + 1), duration: 0.3 }}
                       >
-                        {link.icon && <link.icon size={20} />}
-                        <span className="relative z-10">{link.name}</span>
-                        <motion.div
-                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent/10 to-blue-500/10 opacity-0 group-hover:opacity-100"
-                          initial={false}
-                          transition={{ duration: 0.3 }}
-                        />
-                      </button>
-                    </motion.li>
-                  ))}
+                        <button
+                          onClick={(e) =>
+                            handleMenuOptionClick(e, link.href, false) // AI assistant never true here
+                          }
+                          className={cn(
+                            "flex items-center gap-3 py-4 px-6 text-lg font-medium transition-all duration-300 relative rounded-xl group cursor-pointer w-full text-left",
+                            activeSection === link.href.substring(1)
+                              ? "text-accent bg-accent/10 shadow-lg"
+                              : "text-foreground/80 hover:text-accent hover:bg-accent/5"
+                          )}
+                        >
+                          {link.icon && <link.icon size={20} />}
+                          <span className="relative z-10">{link.name}</span>
+                          <motion.div
+                            className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent/10 to-blue-500/10 opacity-0 group-hover:opacity-100"
+                            initial={false}
+                            transition={{ duration: 0.3 }}
+                          />
+                        </button>
+                      </motion.li>
+                    ))}
                 </ul>
               </div>
 
               {/* Footer with Social Icons */}
-              <motion.div 
+              <motion.div
                 className="p-6 border-t border-border bg-secondary/30 shrink-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
